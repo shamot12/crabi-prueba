@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "156b4d2a-8c2b-410a-a387-c5932dc8da6d",
+		"name": "Prueba Técnica Crabi - RSHS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33219495"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"first_name\": \"Roberto\",\n  \"last_name\": \"Hernandez\",\n  \"email\": \"email@domain.com.mx\",\n  \"password\": \"password\",\n  \"country\": \"Mexico\"\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}{{basePath}}/users",
+							"host": [
+								"{{baseURL}}{{basePath}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "Creates the register of a user. A validation for preventing money laundry is performed with a third party service.\n\nRequired data for creating the register is first_name, last_name, email, password and country.\n\n400 error is returned when user is already registered or when user data is on blacklists. JSON object contains **statusCode** and **message**.\n\nWhen registration is successful, status code 201 is returned. And JSON object with a **message** field is returned."
+					},
+					"response": []
+				},
+				{
+					"name": "Get user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtYWlsQGRvbWFpbi5jb20iLCJpZCI6IjY2MzMxNTg2MjZjNTkzODZhZTQ2MGNiMSIsImlhdCI6MTcxNDYzMDQwOSwiZXhwIjoxNzE0NjM0MDA5fQ.rTgr859UXQSIi8Pwd_drDRKyGGcg7h7rNgEKST7AYGY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}{{basePath}}/users",
+							"host": [
+								"{{baseURL}}{{basePath}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "This endpoint retrieves the data from a user.\n\nFor consuming it, a **token header** must be sent with the JWT string received from the _login_ endpoint.\n\nReturning values when there is a valid token are **first_name**, **last_name**, **email** and **country** data."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"email@domain.com\",\n  \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}{{basePath}}/login",
+							"host": [
+								"{{baseURL}}{{basePath}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "Login authetication is performed through email and password.\n\nTherefore, email and password are required when sending the request.\n\nIf credentials are correct, a JSON object with a true boolean **status**, a **message** field and a JSON Web Token (**jwt** field) is returned.\n\nOtherwise, just a JSON object with a false boolean **status** and a WRONG CREDENTIALS **message**."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "basePath",
+			"value": "/rshs/crabi",
+			"type": "string"
+		}
+	]
+}

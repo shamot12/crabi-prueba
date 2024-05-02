@@ -1,0 +1,34 @@
+[{
+  "_id": {
+    "$oid": "6633158626c59386ae460cb1"
+  },
+  "first_name": "Samuel",
+  "last_name": "Hernandez",
+  "email": "email@domain.com",
+  "password": "$2b$10$9PDlk0RYgVdAdWWa3tJzA.TfWH3AWZ8ZHqq8kuRsjK8Bo8hgyTAci",
+  "country": "Mexico",
+  "creadoEn": {
+    "$date": "2024-05-02T04:24:38.918Z"
+  },
+  "actualizadoEn": {
+    "$date": "2024-05-02T04:24:38.918Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663342a8fa05bbbe140f9b44"
+  },
+  "first_name": "Roberto",
+  "last_name": "Hernandez",
+  "email": "email@domain.com.mx",
+  "password": "$2b$10$yixtWj42hSftp.19E2RuOuUkUmvYOwPRTI8M5g6xZQ0AOS0ImHWMG",
+  "country": "Mexico",
+  "createdAt": {
+    "$date": "2024-05-02T07:37:12.450Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-02T07:37:12.450Z"
+  },
+  "__v": 0
+}]

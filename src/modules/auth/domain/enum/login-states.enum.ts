@@ -1,0 +1,4 @@
+export enum LoginStatesEnum {
+    WRONG_CREDENTIALS = 'WRONG CREDENTIALS',
+    LOGIN_SUCCESSFUL = 'LOGIN SUCCESSFUL'
+}
