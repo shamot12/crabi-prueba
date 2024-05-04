@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+    crabi-prueba-db:
+        container_name: crabi-prueba-db
+        image: mongo:4.2.0
+        environment:
+            MONGO_INITDB_DATABASE: "crabi-solution"
+            MONGO_INITDB_ROOT_USERNAME: "crabiuser"
+            MONGO_INITDB_ROOT_PASSWORD: "crabipass"
+        ports:
+            - "27217:27017"
+        networks:
+            - crabi-prueba-net
+
+    crabi-prueba:
+        volumes:
+            - ./:/usr/src/app
+            - /usr/src/app/node_modules
+
+        env_file: .env
+        ports:
+            - 3000:80
+
+        depends_on:
+            - crabi-prueba-db
+
+        build:
+            dockerfile: ./Docker/Dockerfile
+
+        networks:
+            - crabi-prueba-net
+
+networks:
+    crabi-prueba-net:
+        name: crabi-prueba-net

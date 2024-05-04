@@ -25,6 +25,7 @@ Otherwise, just a JSON object with a false boolean *status* and a WRONG CREDENTI
 An example of the users collection generated is included on the `data` folder.
 A POSTMAN collection including requests examples for the endpoints presented is also included on the `data` folder.
 
+Documentation could also be found on the /swagger endpoint of the project.
+
 ### Future work
-- Docker files
 - Tests
