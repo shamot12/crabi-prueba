@@ -6,6 +6,15 @@ import { User } from '../../database/entities';
 import jwt from 'jsonwebtoken';
 import { ConfigService } from '@nestjs/config';
 
+declare module 'jsonwebtoken' {
+    export interface UserTokenJWTPayload extends jwt.JwtPayload {
+        email: string;
+        id: string;
+        iat: number;
+        exp: number;
+    }
+}
+
 @Injectable()
 export class GetUserUseCase {
     private readonly logger = new Logger(GetUserUseCase.name);
@@ -19,7 +28,7 @@ export class GetUserUseCase {
     }
 
     async handle(dto: GetUserDto, token: string): Promise<GetUserSerializer> {
-        var decoded = <jwt.UserTokenJwtPayload> jwt.verify(token, this.jwtKey);
+        let decoded = <jwt.UserTokenJWTPayload> jwt.verify(token, this.jwtKey);
 
         const user = await this.userRepository.findById(decoded.id);
 
